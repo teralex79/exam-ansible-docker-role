@@ -3,15 +3,20 @@
 - name: Ensure old versions of Docker are not installed.
   package:
     name:
-      - docker
-      - docker-client
-      - docker-client-latest
-      - docker-common
-      - docker-engine
-      - docker-latest
-      - docker-latest-logrotate
-      - docker-logrotate
+      - docker*
+#      - docker-client
+#      - docker-client-latest
+#      - docker-common
+#      - docker-engine
+#      - docker-latest
+#      - docker-latest-logrotate
+#      - docker-logrotate
     state: absent
+
+- name: Add Epel repository.
+  package:
+    name: epel-release
+    state: present
 
 - name: Add Docker GPG key.
   rpm_key:

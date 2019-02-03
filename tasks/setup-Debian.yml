@@ -3,12 +3,20 @@
 - name: Ensure old versions of Docker are not installed.
   package:
     name:
-      - docker
-      - docker-engine
-      - docker.io
+      - docker*
+#      - docker-ce
+#      - docker-engine
+#      - docker.io
       - containerd
       - runc
     state: absent
+
+#- name: Ensure old versions of Docker are not installed in pip.
+#  pip:
+#    name:
+#      - docker
+#      - docker-compose
+#    state: absent
 
 - name: Updates apt cache
   apt: update_cache=true
@@ -17,7 +25,6 @@
   apt:
     name:
       - apt-transport-https
-      - ca-certificates
       - ca-certificates
       - curl
       - gnupg2
