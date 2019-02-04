@@ -1,5 +1,4 @@
 ---
-
 - name: Ensure old versions of Docker are not installed.
   package:
     name:
@@ -10,13 +9,6 @@
       - containerd
       - runc
     state: absent
-
-#- name: Ensure old versions of Docker are not installed in pip.
-#  pip:
-#    name:
-#      - docker
-#      - docker-compose
-#    state: absent
 
 - name: Updates apt cache
   apt: update_cache=true
@@ -50,4 +42,3 @@
     repo: "{{ docker_apt_repository }}"
     state: present
     update_cache: true
-

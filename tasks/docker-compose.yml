@@ -1,5 +1,4 @@
 ---
-
 - name: Self-upgrade Pip.
   pip:
     name: pip
