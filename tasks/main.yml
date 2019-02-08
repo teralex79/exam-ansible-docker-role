@@ -26,19 +26,20 @@
   pip:
     name:
       - pip
-    state: latest
-  register: pkg_res
+#    state: latest
+  extra_args: --upgrade    
+  register: pip_res
   retries: 3
-  until: pkg_res | success
+  until: pip_res | success
 
 - name: Install docker from pip.
   pip:
     name:
       - docker
     state: present
-  register: pkg_res
+  register: pip_res
   retries: 3
-  until: pkg_res | success
+  until: pip_res | success
 
 - name: Ensure Docker is started and enabled at boot.
   service:
