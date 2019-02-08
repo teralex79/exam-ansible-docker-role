@@ -1,8 +1,4 @@
 ---
-- name: Self-upgrade Pip.
-  pip:
-    name: pip
-    state: latest
 
 - name: Check current docker-compose version.
   command: docker-compose --version
