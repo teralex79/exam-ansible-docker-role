@@ -16,11 +16,13 @@
   package:
     name: epel-release
     state: present
+  retries: 3
 
 - name: Add Docker GPG key.
   rpm_key:
     key: https://download.docker.com/linux/centos/gpg
     state: present
+  retries: 3
 
 - name: Add Docker repository.
   get_url:
