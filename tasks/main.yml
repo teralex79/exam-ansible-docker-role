@@ -18,19 +18,19 @@
   package:
     name: python-pip
     state: present
-    version: latest
+#    version: latest
   register: pkg_res
   until: ( pkg_res is success )
   retries: 3
 
-#- name: Self-upgrade Pip.
-#  pip:
-#    name:
-#      - pip
-#    state: latest
-#  register: pkg_res
-#  until: ( pkg_res is success )
-#  retries: 3
+- name: Self-upgrade Pip.
+  pip:
+    name:
+      - pip
+    state: latest
+  register: pkg_res
+  until: ( pkg_res is success )
+  retries: 3
 
 - name: Install docker from pip.
   pip:
