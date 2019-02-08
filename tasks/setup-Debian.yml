@@ -12,9 +12,9 @@
 
 - name: Updates apt cache
   apt: update_cache=true
-#  registr: pkg_res
-#  retries: 3
-#  until: pkg_res | success
+  registr: pkg_res
+  retries: 3
+  until: pkg_res | success
 
 - name: Ensure dependencies are installed.
   apt:
@@ -25,9 +25,9 @@
       - gnupg2
       - software-properties-common
     state: present
-#  registr: pkg_res
-#  retries: 3
-#  until: pkg_res | success
+  registr: pkg_res
+  retries: 3
+  until: pkg_res | success
 
 - name: Add Docker apt key.
   apt_key:
@@ -36,9 +36,9 @@
     state: present
   register: add_repository_key
   ignore_errors: "{{ docker_apt_ignore_key_error }}"
-#  registr: pkg_res
-#  retries: 3
-#  until: pkg_res | success
+  registr: pkg_res
+  retries: 3
+  until: pkg_res | success
 
 - name: Add Docker apt key (alternative for older systems without SNI).
   shell: "curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -"
