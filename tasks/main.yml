@@ -17,20 +17,21 @@
 - name: Install python-pip
   package:
     name: python-pip
-    state: present
+    state: forcereinstall
+#present
   register: pkg_res
   retries: 3
   until: pkg_res | success
 
-- name: Self-upgrade Pip.
-  pip:
-    name:
-      - pip
+#- name: Self-upgrade Pip.
+#  pip:
+#    name:
+#      - pip
 #    state: latest
-  extra_args: --upgrade
-  register: pip_res
-  retries: 3
-  until: pip_res | success
+#  extra_args: --upgrade
+#  register: pip_res
+#  retries: 3
+#  until: pip_res | success
 
 - name: Install docker from pip.
   pip:
