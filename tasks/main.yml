@@ -11,7 +11,7 @@
     state: "{{ docker_package_state }}"
   register: pkg_res
   retries: 3
-  until: pkg_res | success 
+  until: pkg_res | success
   notify: restart docker
 
 - name: Install python-pip
@@ -46,4 +46,4 @@
     state: "{{ docker_service_state }}"
     enabled: "{{ docker_service_enabled }}"
 
-- include_tasks: docker-compose.yml  
+- include_tasks: docker-compose.yml
