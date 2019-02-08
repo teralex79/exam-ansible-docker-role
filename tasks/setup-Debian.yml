@@ -13,8 +13,8 @@
 - name: Updates apt cache
   apt: update_cache=true
   register: pkg_res
-  until: (pkg_res is success)
-    retries: 3
+  until: ( pkg_res is success )
+  retries: 3
 
 - name: Ensure dependencies are installed.
   apt:
@@ -26,8 +26,8 @@
       - software-properties-common
     state: present
   register: pkg_res
-  until: (pkg_res is success)
-    retries: 3
+  until: ( pkg_res is success )
+  retries: 3
 
 - name: Add Docker apt key.
   apt_key:
@@ -37,7 +37,7 @@
   register: add_repository_key
   ignore_errors: "{{ docker_apt_ignore_key_error }}"
 #  register: pkg_res
-    retries: 3
+  retries: 3
 #  until: pkg_res | success
 
 - name: Add Docker apt key (alternative for older systems without SNI).
