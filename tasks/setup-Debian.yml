@@ -12,7 +12,7 @@
 
 - name: Updates apt cache
   apt: update_cache=true
-  registr: pkg_res
+  register: pkg_res
   retries: 3
   until: pkg_res | success
 
@@ -25,7 +25,7 @@
       - gnupg2
       - software-properties-common
     state: present
-  registr: pkg_res
+  register: pkg_res
   retries: 3
   until: pkg_res | success
 
@@ -36,7 +36,7 @@
     state: present
   register: add_repository_key
   ignore_errors: "{{ docker_apt_ignore_key_error }}"
-  registr: pkg_res
+  register: pkg_res
   retries: 3
   until: pkg_res | success
 
