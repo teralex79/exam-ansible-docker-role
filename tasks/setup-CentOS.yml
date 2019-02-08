@@ -17,16 +17,16 @@
     name: epel-release
     state: present
   register: pkg_res
+  until: ( pkg_res | success )
   retries: 3
-  until: pkg_res | success
 
 - name: Add Docker GPG key.
   rpm_key:
     key: https://download.docker.com/linux/centos/gpg
     state: present
   register: pkg_res
+  until: ( pkg_res | success )
   retries: 3
-  until: pkg_res | success
 
 - name: Add Docker repository.
   get_url:
