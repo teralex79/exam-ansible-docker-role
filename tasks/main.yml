@@ -9,28 +9,36 @@
   package:
     name: "{{ docker_package }}"
     state: "{{ docker_package_state }}"
-  retries: 3 
+  register: pkg_res
+  retries: 3
+  until: pkg_res | success 
   notify: restart docker
 
 - name: Install python-pip
   package:
     name: python-pip
     state: present
+  register: pkg_res
   retries: 3
+  until: pkg_res | success
 
 - name: Self-upgrade Pip.
   pip:
     name:
       - pip
     state: latest
+  register: pkg_res
   retries: 3
+  until: pkg_res | success
 
 - name: Install docker from pip.
   pip:
     name:
       - docker
     state: present
+  register: pkg_res
   retries: 3
+  until: pkg_res | success
 
 - name: Ensure Docker is started and enabled at boot.
   service:
