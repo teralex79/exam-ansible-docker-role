@@ -18,6 +18,9 @@ docker_install_compose: true
 docker_compose_version: "1.22.0"
 docker_compose_path: /usr/local/bin/docker-compose
 
+#Pip option
+pip_version: "19.0.1"
+
 # Used only for Debian/Ubuntu. Switch 'stable' to 'edge' if needed.
 docker_apt_release_channel: stable
 docker_apt_arch: amd64
