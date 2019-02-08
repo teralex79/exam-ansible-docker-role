@@ -27,7 +27,7 @@
     name:
       - pip
 #    state: latest
-  extra_args: --upgrade    
+  extra_args: --upgrade
   register: pip_res
   retries: 3
   until: pip_res | success
