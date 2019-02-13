@@ -14,19 +14,19 @@
   retries: 3
   notify: restart docker
 
-- name: Check current pip version.
-  command: pip --version
-  register: pip_current_version
-  changed_when: false
-  failed_when: false
+#- name: Check current pip version.
+#  command: pip --version
+#  register: pip_current_version
+#  changed_when: false
+#  failed_when: false
 
-- name: Delete existing pip version if it's different.
-  package:
-    name: python-pip
-    state: absent
-  when: >
-    pip_current_version.stdout is defined
-    and pip_version not in pip_current_version.stdout
+#- name: Delete existing pip version if it's different.
+#  package:
+#    name: python-pip
+#    state: absent
+#  when: >
+#    pip_current_version.stdout is defined
+#    and pip_version not in pip_current_version.stdout
 
 - name: Install python-pip
   package:
@@ -35,6 +35,24 @@
   register: pkg_res
   until: ( pkg_res is success )
   retries: 3
+
+- name: Check current pip version.
+  command: pip --version
+  register: pip_current_version
+  changed_when: false
+  failed_when: false
+
+- name: Upgrade pip if it's different
+  pip:
+    name: 
+      - pip 
+    state: latest
+  register: pkg_res
+  until: ( pkg_res is success )
+  retries: 3
+  when: >
+      pip_current_version.stdout is defined
+      and pip_version not in pip_current_version.stdout
 
 - name: Install docker from pip.
   pip:
