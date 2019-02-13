@@ -3,4 +3,5 @@
   service: 
     name: docker
     state: "{{ docker_restart_handler_state }}"
-  command: "sleep 30"
+- pause:
+    seconds: 20
