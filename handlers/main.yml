@@ -1,7 +1,8 @@
 ---
 - name: restart docker
-  service: 
+  service:
     name: docker
     state: "{{ docker_restart_handler_state }}"
 - pause:
+    prompt: "Waiting 20 seconds for restarting docker service"
     seconds: 20
